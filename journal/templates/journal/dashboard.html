@@ -1,0 +1,16 @@
+{% extends 'journal/navbar.html' %}
+
+{% block content %}
+    <head>
+        <title> Edenthought | Dashboard </title>
+    </head>
+    <div class="container p-5 my-3 bg-secondary shadow-md text-white form-layout">
+        
+        <h2> {{user}} </h2>
+        <br> <br>
+        <p> Welcom {{user}}! This is your dashboard. </p>
+        <img style="width: 200px; height: 200px;" src="{{profilePic.profile_pic.url}}">
+        <br> <br>
+        
+    </div>
+{% endblock content %}

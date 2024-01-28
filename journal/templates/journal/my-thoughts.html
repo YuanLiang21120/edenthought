@@ -1,0 +1,42 @@
+{% extends 'journal/navbar.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <head>
+        <title> Edenthought | My thought </title>
+    </head>
+    
+    {% for message in messages %}
+            
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+
+            <p id="message-timer" class="alert alert-success float-center text-center message-text"> <i class="fa fa-check" aria-hidden="true"></i> &nbsp; {{message}} </p>
+        
+        {% endif %}
+
+    {% endfor %}
+
+    {% for thought in AllThoughts  %}
+        
+    <div class="container p-5 my-3 bg-primary shadow-md text-white form-layout">
+        <h3>{{thought.title}}</h3>
+        <br> <br>
+        {{thought.content}}
+        <br> <br>
+        {{thought.date_posted}}
+        <br><hr>
+        <p> By {{thought.user}} </p>
+        <br>
+        <a class="btn btn-secondary btn-md w-100 btn-block p-2" href="{% url 'update-thought' thought.id %}"> <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Update </a>
+        <br><br>
+        <a class="btn btn-danger btn-md w-100 btn-block p-2" href="{% url 'delete-thought' thought.id %}"> <i class="fa fa-eraser" aria-hidden="true"></i> &nbsp; Delete </a>
+        
+    </div>
+    <br>
+    {% endfor %}
+
+    <script src="{% static 'js/app.js' %}"></script>
+
+    {% endblock content %}

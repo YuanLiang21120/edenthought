@@ -1,0 +1,58 @@
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+<html>
+
+    <head>
+
+        <title> Edenthought | Login </title>
+
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/sandstone/bootstrap.min.css">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    {% for message in messages %}
+            
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+
+            <p id="message-timer" class="alert alert-success float-center text-center message-text"> <i class="fa fa-check" aria-hidden="true"></i> &nbsp; {{message}} </p>
+        
+        {% endif %}
+
+    {% endfor %}
+
+    <div class="container p-5 my-3 bg-info shadow-md text-white form-layout">
+
+        <h3> Login to your account </h3>
+
+        <h5> Share your thoughts today! </h5>
+
+        <br> <br>
+
+        <form method="POST" autocomplete="off">
+            
+            {% csrf_token %}
+            
+            {{LoginForm|crispy}}
+
+            <br><br>
+
+            <button class="btn btn-secondary btn-md w-100 btn-block p-3" type="submit"> <i class="fa fa-sign-in" aria-hidden="true"></i> &nbsp; Login </button>
+            <br><br>
+            <div class="text-center">
+                <a  href="{% url 'register' %}" style="color:#ffffff;"> Don't have an account? </a>
+            </div>
+            <br>
+            <div class="text-center">
+                <a  href="{% url 'reset_password' %}" style="color:#ffffff;"> Forgotten your password? </a>
+            </div>
+        </form>
+
+    </div>
+
+    <script src="{% static 'js/app.js' %}"></script>
+</html>

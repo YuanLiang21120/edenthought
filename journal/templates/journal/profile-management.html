@@ -1,0 +1,58 @@
+{% extends 'journal/navbar.html' %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <head>
+        <title> Edenthought | Profile management </title>
+    </head>
+
+    <div class="container p-5 my-3 bg-info shadow-md text-white form-layout">
+                
+        <h3> Update username and email </h3>
+        <br> <br>
+
+        <form method="POST" autocomplete="off">
+            
+            {% csrf_token %}
+            
+            {{UserUpdateForm|crispy}}
+
+            <br><br>
+
+            <button class="btn btn-secondary btn-md w-100 btn-block p-3" type="submit"> <i class="fa fa-wrench" aria-hidden="true"></i> &nbsp; Update </button>
+
+        </form>
+        
+    </div>
+    
+    <div class="container p-5 my-3 bg-info shadow-md text-white form-layout">
+                
+        <h3> Update profile picture </h3>
+        <br> <br>
+
+        <form method="POST" autocomplete="off" enctype="multipart/form-data">
+            
+            {% csrf_token %}
+            
+            {{ProfileUpdateForm|crispy}}
+
+            <br><br>
+
+            <button class="btn btn-secondary btn-md w-100 btn-block p-3" type="submit"> <i class="fa fa-upload" aria-hidden="true"></i> &nbsp; Upload </button>
+
+        </form>
+        
+    </div>
+
+    <br>
+
+    <div class="container p-5 my-3 bg-danger shadow-md text-white form-layout">
+        <h3> Delete your account </h3>
+        <br>
+        <a  href="{% url 'delete-account' %}" style="color:#ffffff;"> <i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp; Proceed to delete your account </a>
+
+    </div>
+    <br>
+{% endblock content %}

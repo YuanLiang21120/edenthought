@@ -1,0 +1,29 @@
+{% extends 'journal/navbar.html' %}
+
+{% block content %}
+    <head>
+        <title> Edenthought | Delete account </title>
+    </head>
+    <div class="container p-5 my-3 bg-danger shadow-md text-white form-layout">
+                
+        <h3> Delete your account </h3>
+        <p> Are you sure that you want to delete your account? </p>
+        <br> <br>
+        
+        <form method="POST" autocomplete="off">
+            
+            {% csrf_token %}
+            
+            <button class="btn btn-secondary btn-md w-100 btn-block p-3" type="submit"> <i class="fa fa-trash" aria-hidden="true"></i> &nbsp; Yes, delete my account </button>
+
+        </form>
+        <br>
+        <a  href="{% url 'profile-management' %}" style="color:#ffffff;"> <i class="fa fa-arrow-left" aria-hidden="true"></i> &nbsp; Return to profile management </a>
+        
+    </div>
+    
+    <br>
+
+
+
+{% endblock content %}
