@@ -1,0 +1,2 @@
+# edenthought
+django project 
